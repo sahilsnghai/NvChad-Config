@@ -14,6 +14,14 @@ return {
   },
 
   -- test new blink
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        side = "right",
+      },
+    },
+  },
   -- { import = "nvchad.blink.lazyspec" },
 
   -- {
@@ -25,4 +33,17 @@ return {
   -- 		},
   -- 	},
   -- },
+
+  -- Added: Persistent inline git blame configuration
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true, -- Kept open permanently
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- Placed at the end of the line
+        delay = 100,           -- Shows up almost instantly (100ms)
+      },
+    },
+  },
 }
