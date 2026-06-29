@@ -3,6 +3,8 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
+    -- python = { "isort", "black" },
+    python = { "ruff_organize_imports", "ruff_format" },
   },
 
   -- format_on_save = {

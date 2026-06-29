@@ -117,7 +117,7 @@ map("n", "<A-q>", function()
     end
   end
   
-  vim.api.nvim_set_current_win(start_win)
+      vim.api.nvim_set_current_win(start_win)
 end, { desc = "Jump directly from buffer into terminal" })
 
 
@@ -131,6 +131,22 @@ map("n", "<A-f><A-a>", "<cmd>Telescope find_files follow=true no_ignore=true hid
 map("n", "<A-f><A-w>", "<cmd>Telescope live_grep<cr>", { desc = "Telescope Live Grep" })
 map("n", "<A-f><A-z>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Telescope Find in Current Buffer" })
 
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>",{})
+-- Format selected visual section using Alt+k then f
+map("v", "<A-c>f", function()
+  require("conform").format({
+    async = true,
+    lsp_fallback = true,
+  })
+end, { desc = "Format selection with conform" })
+
+-- Optional: Format entire file in Normal mode using the same shortcut
+map("n", "<A-k>f", function()
+  require("conform").format({
+    async = true,
+    lsp_fallback = true,
+  })
+end, { desc = "Format file with conform" })
 -- Unbind the default NvChad Space mappings
 -- vim.keymap.del("n", "<leader>ff")
 -- vim.keymap.del("n", "<leader>fa")
