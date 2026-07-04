@@ -147,6 +147,12 @@ map("n", "<A-k>f", function()
     lsp_fallback = true,
   })
 end, { desc = "Format file with conform" })
+
+
+
+vim.keymap.del("n", "<C-n>")
+map("n", "<A-n>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle nvimtree" })
+
 -- Unbind the default NvChad Space mappings
 -- vim.keymap.del("n", "<leader>ff")
 -- vim.keymap.del("n", "<leader>fa")
