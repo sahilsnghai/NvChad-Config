@@ -35,7 +35,7 @@ map("n", "<C-g>", function()
 end, { desc = "Toggle terminal" })
 
 
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "Save file" })
+-- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "Save file" })
 
 -- 🔙 Escape from terminal mode using ESC
 map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })

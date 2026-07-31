@@ -5,3 +5,14 @@ local servers = { "html", "cssls", "pyright", "ruff" }
 vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers 
+
+vim.lsp.config("yamlls", {
+  settings = {
+    yaml = {
+      schemas = {
+        kubernetes = "/*.yaml",
+      },
+    },
+  },
+})
+vim.lsp.enable("yamlls")

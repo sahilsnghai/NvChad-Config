@@ -9,7 +9,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "configs.lspconfig"
+  require "configs.lspconfig"
     end,
   },
 
@@ -19,6 +19,10 @@ return {
     opts = {
       view = {
         side = "right",
+      },
+      filters = {
+        dotfiles = false,     -- Show hidden/dotfiles by default
+        git_ignored = false,  -- Show files ignored by .gitignore by default
       },
     },
   },
