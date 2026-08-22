@@ -50,4 +50,40 @@ return {
       },
     },
   },
+
+
+  {
+    "nvim-telescope/telescope.nvim",
+      opts = function()
+  -- Fetch NvChad's underlying default configuration
+  local opts = require "nvchad.configs.telescope"
+
+  -- Merge our custom ignore patterns into the default options
+  opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+    file_ignore_patterns = {
+      "%.git/", -- Completely hides the internal .git folder
+      "%.git$", -- Hides standard loose .git references
+    },
+  })
+
+  return opts
+      end,
+    },
+    
+ {
+    "akinsho/toggleterm.nvim",
+    version = '*',
+    -- 🛑 ADD THESE TWO LINES TO FIX THE E492 ERROR:
+    cmd = { "ToggleTerm", "ToggleTermToggleAll", "ToggleTermSendVisualLines", "ToggleTermSendVisualSelection" },
+    keys = { [[<c-\>]] }, 
+    config = function()
+      require("toggleterm").setup {
+        size = 15,
+        open_mapping = [[<c-\>]], -- Press Ctrl + \ to toggle it open/closed
+        direction = "horizontal", -- Opens at the bottom like VSCode
+        shade_terminals = true,
+        persist_size = true,
+      }
+    end
+  },
 }

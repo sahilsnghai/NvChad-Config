@@ -120,14 +120,16 @@ map("n", "<A-q>", function()
       vim.api.nvim_set_current_win(start_win)
 end, { desc = "Jump directly from buffer into terminal" })
 
-
-
 -- map({ "n", "v" }, "<A>", "<leader>", { remap = true })
-
 
 -- New Alt mappings (<M-f> means Alt+f)
 map("n", "<A-f><A-f>", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find Files" })
-map("n", "<A-f><A-a>", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", { desc = "Telescope Find All Files" })
+map(
+  "n",
+  "<A-f><A-a>",
+  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
+  { desc = "Telescope Find All Files" }
+)
 map("n", "<A-f><A-w>", "<cmd>Telescope live_grep<cr>", { desc = "Telescope Live Grep" })
 map("n", "<A-f><A-z>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Telescope Find in Current Buffer" })
 
@@ -152,6 +154,17 @@ end, { desc = "Format file with conform" })
 
 vim.keymap.del("n", "<C-n>")
 map("n", "<A-n>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle nvimtree" })
+
+
+-- Toggle the main terminal panel (Terminal 1)
+vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd>ToggleTerm<cr>", { desc = "Toggle Main Terminal" })
+vim.keymap.set({ "n", "t" }, "<A-a>", "<cmd>ToggleTermToggleAll<cr>", { desc = "Toggle All Terminals" })
+
+-- CREATE & FOCUS TERMINALS (Works directly inside terminal mode!)
+vim.keymap.set({ "n", "t" }, "<A-h>", "<cmd>1ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 1" })
+vim.keymap.set({ "n", "t" }, "<A-2>", "<cmd>2ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 2" })
+vim.keymap.set({ "n", "t" }, "<A-3>", "<cmd>3ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 3" })
+vim.keymap.set({ "n", "t" }, "<A-4>", "<cmd>4ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 4" })
 
 -- Unbind the default NvChad Space mappings
 -- vim.keymap.del("n", "<leader>ff")
