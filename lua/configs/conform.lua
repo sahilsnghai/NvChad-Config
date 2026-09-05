@@ -5,6 +5,8 @@ local options = {
     -- html = { "prettier" },
     -- python = { "isort", "black" },
     python = { "ruff_organize_imports", "ruff_format" },
+    json = { "prettier" },
+    jsonc = { "prettier" },
   },
 
   -- format_on_save = {

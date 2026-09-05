@@ -157,14 +157,32 @@ map("n", "<A-n>", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle nvimtree" })
 
 
 -- Toggle the main terminal panel (Terminal 1)
-vim.keymap.set({ "n", "t" }, "<A-t>", "<cmd>ToggleTerm<cr>", { desc = "Toggle Main Terminal" })
-vim.keymap.set({ "n", "t" }, "<A-a>", "<cmd>ToggleTermToggleAll<cr>", { desc = "Toggle All Terminals" })
+map({ "n", "t" }, "<A-t>", "<cmd>ToggleTerm<cr>", { desc = "Toggle Main Terminal" })
+map({ "n", "t" }, "<A-a>", "<cmd>ToggleTermToggleAll<cr>", { desc = "Toggle All Terminals" })
 
 -- CREATE & FOCUS TERMINALS (Works directly inside terminal mode!)
-vim.keymap.set({ "n", "t" }, "<A-h>", "<cmd>1ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 1" })
-vim.keymap.set({ "n", "t" }, "<A-2>", "<cmd>2ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 2" })
-vim.keymap.set({ "n", "t" }, "<A-3>", "<cmd>3ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 3" })
-vim.keymap.set({ "n", "t" }, "<A-4>", "<cmd>4ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 4" })
+map({ "n", "t" }, "<A-h>", "<cmd>1ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 1" })
+map({ "n", "t" }, "<A-2>", "<cmd>2ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 2" })
+map({ "n", "t" }, "<A-3>", "<cmd>3ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 3" })
+map({ "n", "t" }, "<A-4>", "<cmd>4ToggleTerm<cr>", { desc = "Spawn/Toggle Terminal 4" })
+
+
+map("v", "r", function()
+  vim.cmd('normal! "zy')
+  local search = vim.fn.getreg("z")
+  local replace = vim.fn.input("Replace with: ")
+
+  if replace ~= "" then
+    vim.cmd(string.format(
+      "%%s/\\V%s/%s/gc",
+      vim.fn.escape(search, "/\\"),
+      replace
+    ))
+  end
+end, { desc = "Replace selected text" })
+
+-- vim.keymap.set("n", "n", "n", { noremap = true })
+-- vim.keymap.set("n", "N", "N", { noremap = true })
 
 -- Unbind the default NvChad Space mappings
 -- vim.keymap.del("n", "<leader>ff")

@@ -7,7 +7,7 @@ return {
     init = function()
       -- 1. Configure the minimap layout and options via global variable
       vim.g.neominimap = {
-        auto_enable = true,
+        auto_enable = false,
         sync_cursor = true, -- CRITICAL: Forces the minimap to track and display your cursor
         git = {
           enabled = true,   -- Tracks git hooks changes
